@@ -1,9 +1,25 @@
-<div class="bg-red-100  h-2/3">
-    <p>Creatr Poll</p>
-    <form action="">
-        <div>
-            <label for="">Add Question</label>
-            <input type="text">
+<div class="bg-gray-300 w-full text-sm  text-gray-700  h-5/6">
+    <p class="w-full text-center text-xl font-bold p-2">Create Poll</p>
+    <form (ngSubmit)="onSubmit()" [formGroup]="form"
+        class="w-2/3 mx-auto bg-gray-100 p-4 rounded shadow justify-center flex flex-col align-baseline items-baseline  gap-4">
+        <div class=" flex flex-col gap-2 w-full ">
+            <label class="font-semibold text-gray-600 text-sm ">Add Question</label>
+            <input type="text" class="rounded p-1.5 border-2 shadow-gray-300">
+        </div>
+        <div class=" flex flex-col gap-2 w-full items-baseline  ">
+
+            <button (click)="addChoice()"
+                class="font-semibold text-gray-600 text-sm border-2 border-gray-600 p-2 rounded-sm ">Add Choice</button>
+            <div formArrayName="choices" class="w-full flex flex-col gap-2">
+                <div *ngFor="let choice of choices.controls; let i =index" class="flex gap-2 w-full">
+                    <input type="text" [formControlName]="i" class="rounded p-1.5 border-2 shadow-gray-300 w-3/4">
+                    <button class="w-1/5 border-2 border-red-400 shadow space-x-2 rounded-sm font-semibold text-md"><i
+                            class='bx bx-trash' style='color:#c52929 ; font-size:20px'></i></button>
+                </div>
+            </div>
+        </div>
+        <div class="bg-gray-800 text-white w-full py-2 text-center rounded shadow-md font-semibold text-sm">
+            <button>Submit</button>
         </div>
     </form>
 </div>
