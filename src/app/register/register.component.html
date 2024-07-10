@@ -1,0 +1,57 @@
+
+<div class="flex flex-col justify-start items-center mt-8 w-full  md:h-5/6 text-gray-800 bg-gray-300">
+    <div class="w-1/2 min-h-5/6 bg-gray-50 m-12 rounded-md px-8 py-2 shadow-lg shadow-gray-400">
+    <h3
+    class="font-bold text-xl py-4 text-gray-400"
+    >Register</h3>
+<form 
+(ngSubmit)="onSubmit()"
+[formGroup]="form"
+
+class=" w-full flex flex-col gap-4 justify-start items-start">
+    <div class="flex flex-col gap-1 w-full p2  text-md">
+        <span *ngIf="form.get('Username')?.touched && !form.get('Username')?.valid"
+         class="text-xs bg-red-100 p-2 rounded border-red-400 border-solid text-rose-700  ">Username is Required</span>
+        <label for="" class="font-medium text-sm text-gray-500">Username</label>
+        <input type="text" class="border-2 border-gray-300 rounded p-1"  formControlName="Username">
+    </div>
+    <div class="flex flex-col gap-1 w-full p2  text-sm">
+        <span *ngIf="form.get('Email')?.touched && !form.get('Email')?.valid"
+         class="text-xs bg-red-100 p-2 rounded border-red-400 border-solid text-rose-700  ">Email is Required</span>
+        
+        <label for="" class="font-medium text-sm text-gray-500">Email</label>
+        <input type="text" class="border-2 border-gray-300 rounded p-1" formControlName="Email" >
+
+    </div>
+    <div class="flex flex-col gap-1 w-full p2  text-sm">
+        <span *ngIf="form.get('Password')?.touched && !form.get('Password')?.valid"
+        class="text-xs bg-red-100 p-2 rounded border-red-400 border-solid text-rose-700  ">Password is Required</span>
+       
+        <label for="" class="font-medium text-sm text-gray-500">Password</label>
+        <input type="text" class="border-2 border-gray-300 rounded p-1" formControlName="Password">
+
+    </div>
+    <div class="flex flex-col gap-1 w-full p2  text-sm">
+        <span *ngIf="form.get('Password')?.touched && !form.get('Password')?.valid"
+        class="text-xs bg-red-100 p-2 rounded border-red-400 border-solid text-rose-700  ">Password is Required</span>
+       
+        <label for="" class="font-medium text-sm text-gray-500">Confirm Password</label>
+        <input type="text" class="border-2 border-gray-300 rounded p-1">
+
+    </div>
+
+    <button
+    class="bg-gray-800 text-white w-full py-2 rounded shadow-lg font-semibold text-sm transition ease-out delay-100 hover:bg-green-500 disabled:bg-gray-400 disabled:cursor-not-allowed" 
+    disabled = "form.invalid"
+    >Create Account</button>
+   <p
+   class="w-full items-center text-sm  text-center  mb-4">Alreadyhave an account? <a 
+   [routerLink]="['/login']" routerLinkActiveOption="{exact:true}" 
+   class=" text-blue-500 underline  hover:text-blue-800"  
+   
+   >login</a>
+</p>
+</form>
+</div>
+
+</div>

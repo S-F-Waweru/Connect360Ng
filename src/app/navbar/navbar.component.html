@@ -1,0 +1,54 @@
+<div class=" font-semibold text-sm h-1/12 mx-auto flex justify-between items-center p-4">
+    <p class="text-lg text-gray-800 cursor-pointer font-bold ">Connect360</p>
+
+    <img class="sm:block  cursor-pointer text-md w-8 h-8  md:hidden" src="../../assets/menu-outline.svg" alt="menu-svg">
+
+    <div class=" space-x-4 hidden md:flex-row md:flex">
+        <a  
+        [routerLink] = "['']" 
+        routerLinkActive="['active']"
+        routerLinkActiveOptions = "{exact:true}"
+        
+        class="text-gray-500 hover:text-gray-800" >Home</a>
+        <a  
+        [routerLink] = "['']" 
+        routerLinkActive="['active']"
+        routerLinkActiveOptions = "{exact:true}"    
+        class="text-gray-500 hover:text-gray-800" >Educate</a>
+        <a  
+        [routerLink] = "['/polls']" 
+        routerLinkActive="['active']"
+        routerLinkActiveOptions = "{exact:true}"    
+        class="text-gray-500 hover:text-gray-800"  >Polls</a>
+        <a  
+        [routerLink] = "['']" 
+        routerLinkActive="['active']"
+        routerLinkActiveOptions = "{exact:true}"    
+        class="text-gray-500 hover:text-gray-800"  href="">Views</a>
+        <a  
+        [routerLink] = "['']" 
+        routerLinkActive="['active']"
+        routerLinkActiveOptions = "{exact:true}"    
+        class="text-gray-500 hover:text-gray-800"  >Incidents</a>
+    </div>
+    <div class="hidden space-x-4  md:flex-row md:flex  items-center">
+        <a
+
+        [routerLink] = "['login']" 
+        routerLinkActiveOptions = "{exact:true}"  
+
+        class=" px-4 py-1 rounded  border-solid border-2 border-gray-800 
+        transition ease-in-out delay-50
+        hover:bg-gray-800 hover:text-white"
+        >Login</a>
+        <a 
+
+        [routerLink] = "['register']" 
+        routerLinkActiveOptions = "{exact:true}"  
+
+        class ="bg-gray-800 text-white px-4 py-1 shadow shadow-gray-400  rounded border-solid border-2 border-gray-800 
+        transition ease-in-out delay-50
+        hover:bg-green-500  hover:border-green-500"
+        >Register</a>
+    </div>
+</div>
