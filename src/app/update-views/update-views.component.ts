@@ -1,15 +1,16 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormArray, FormControl, ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 @Component({
-  selector: 'app-update-poll',
+  selector: 'app-update-views',
   standalone: true,
-  imports: [ReactiveFormsModule, FormsModule, CommonModule],
-  templateUrl: './update-poll.component.html',
-  styleUrl: './update-poll.component.css'
+  imports: [CommonModule, ReactiveFormsModule, FormsModule,RouterModule],
+  templateUrl: './update-views.component.html',
+  styleUrl: './update-views.component.css'
 })
-export class UpdatePollComponent {
+export class UpdateViewsComponent {
   form!:FormGroup
   constructor(
     private fb:FormBuilder
@@ -17,7 +18,7 @@ export class UpdatePollComponent {
 
   ngOnInit(): void {
     this.form = new FormGroup({
-      Question: this.fb.control(null, Validators.required),
+      Title: this.fb.control(null, Validators.required),
       Choices : this.fb.array([])
     })
   }
@@ -30,4 +31,5 @@ export class UpdatePollComponent {
     this.choices.push(new FormControl('', Validators.required))
   }
   onSubmit(){}
+
 }

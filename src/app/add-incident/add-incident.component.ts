@@ -1,15 +1,17 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule, FormGroup, FormBuilder, Validators, FormArray, FormControl } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 @Component({
-  selector: 'app-update-poll',
+  selector: 'app-add-incident',
   standalone: true,
-  imports: [ReactiveFormsModule, FormsModule, CommonModule],
-  templateUrl: './update-poll.component.html',
-  styleUrl: './update-poll.component.css'
+  imports: [ReactiveFormsModule, CommonModule, FormsModule, RouterModule],
+
+  templateUrl: './add-incident.component.html',
+  styleUrl: './add-incident.component.css'
 })
-export class UpdatePollComponent {
+export class AddIncidentComponent {
   form!:FormGroup
   constructor(
     private fb:FormBuilder
@@ -17,7 +19,7 @@ export class UpdatePollComponent {
 
   ngOnInit(): void {
     this.form = new FormGroup({
-      Question: this.fb.control(null, Validators.required),
+      Title: this.fb.control(null, Validators.required),
       Choices : this.fb.array([])
     })
   }
@@ -30,4 +32,5 @@ export class UpdatePollComponent {
     this.choices.push(new FormControl('', Validators.required))
   }
   onSubmit(){}
+
 }

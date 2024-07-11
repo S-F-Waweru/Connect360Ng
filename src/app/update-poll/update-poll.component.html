@@ -1,1 +1,154 @@
-<p>update-poll works!</p>
+<div class="w-full h-5/6  text-gray-600  bg-gray-300 shadow flex gap-2">
+    <div class="w-1/2 h-11/12 ">
+    <p class="p-4 font-semibold text-lg">Update Poll</p>
+    <form (ngSubmit)="onSubmit()" [formGroup]="form"
+        class="w-11/12 mx-auto bg-gray-100 p-4 rounded shadow justify-center flex flex-col align-baseline items-baseline  gap-4">
+        <div class=" flex flex-col gap-2 w-full ">
+            <label class="font-semibold text-sm ">Update Question</label>
+            <input type="text" class="rounded p-1.5 border-2 shadow-gray-300" placeholder="Your question">
+        </div>
+        <div class=" flex flex-col gap-2 w-full items-baseline  ">
+
+            <button (click)="addChoice()"
+                class="font-semiboldtext-sm border-2 border-gray-600 p-2 shadow-sm rounded-sm ">Add Choice</button>
+            <div formArrayName="choices" class="w-full flex flex-col gap-2">
+                <div *ngFor="let choice of choices.controls; let i =index" class="flex gap-2 w-full">
+                    <input type="text" [formControlName]="i" class="rounded p-1.5 border-2 shadow-gray-300 w-3/4">
+                    <button class="w-1/5 border-2 border-red-400 shadow space-x-2 rounded-sm font-semibold text-md"><i
+                            class='bx bx-trash' style='color:#c52929 ; font-size:20px'></i></button>
+                </div>
+            </div>
+        </div>
+        <div class="bg-gray-800 text-white w-full py-2 text-center rounded shadow-md font-semibold text-sm">
+            <button>Update</button>
+        </div>
+    </form>
+    </div>
+    <div class="w-1/2 h-11/12 overflow-y-scroll  ">
+        <p class="px-4 pt-4 font-semibold text-md ">Your Polls</p>
+
+        <div class="w-full grid grid-cols-1 gap-3 h-10/12 my-4  ">
+            <div class="flex gap-4-baseline w-11/12 mx-auto bg-white  p-2 rounded shadow">
+    
+                <div class="w-3/4 justify-center space-y-1 items-baseline text-xs">
+                   <p class=" font-sm text-gray-600 p-2">This is a sample for ta ppoll
+                    question and the other wordds thath will be ou onsid question and the other wordds thath will be ou onside here</p>
+                   <label class="flex gap-2 px-2">
+                    <p class="text-xs font-normal text-gray-600">Choice 1</p>
+                   </label>
+                   <label class="flex gap-2 px-2">
+                    <p class="text-xs font-normal text-gray-600">Choice 2</p>
+                   </label> <label class="flex gap-2 px-2">
+                    <p class="text-xs font-normal text-gray-600">Choice 3</p>
+                   </label>
+                </div>
+                <div class=" flex flex-col  gap-3  w-1/4 justify-center" >
+                    <button class=" w-11/12 mx-auto text-xs  font-semibold py-1.5 bg-green-200 shadow shadow-green-300 border-1 rounded border-solid border-green-500 text-green-500 transition-opacity ease-in-out delay-150 hover:text-green-50 hover:bg-green-500">Update</button>
+                    <button class=" w-11/12 mx-auto text-xs  font-semibold py-1.5 bg-red-200 shadow shadow-red-300 border-1 rounded border-solid border-red-500 text-red-600 transition-opacity ease-in-out delay-150 hover:text-red-50 hover:bg-red-600">Delete</button>
+
+                </div>
+                
+    
+            </div> 
+
+            <div class="flex gap-4-baseline w-11/12 mx-auto bg-white  p-2 rounded shadow">
+    
+                <div class="w-3/4 justify-center space-y-1 items-baseline text-xs">
+                   <p class=" font-sm text-gray-600 p-2">This is a sample for ta ppoll
+                    question and the other wordds thath will be ou onsid question and the other wordds thath will be ou onside here</p>
+                   <label class="flex gap-2 px-2">
+                    <p class="text-xs font-normal text-gray-600">Choice 1</p>
+                   </label>
+                   <label class="flex gap-2 px-2">
+                    <p class="text-xs font-normal text-gray-600">Choice 2</p>
+                   </label> <label class="flex gap-2 px-2">
+                    <p class="text-xs font-normal text-gray-600">Choice 3</p>
+                   </label>
+                </div>
+                <div class=" flex flex-col  gap-3  w-1/4 justify-center" >
+                    <button class=" w-11/12 mx-auto text-xs  font-semibold py-1.5 bg-green-200 shadow shadow-green-300 border-1 rounded border-solid border-green-500 text-green-500 transition-opacity ease-in-out delay-150 hover:text-green-50 hover:bg-green-500">Update</button>
+                    <button class=" w-11/12 mx-auto text-xs  font-semibold py-1.5 bg-red-200 shadow shadow-red-300 border-1 rounded border-solid border-red-500 text-red-600 transition-opacity ease-in-out delay-150 hover:text-red-50 hover:bg-red-600">Delete</button>
+
+                </div>
+                
+    
+            </div> 
+
+            <div class="flex gap-4-baseline w-11/12 mx-auto bg-white  p-2 rounded shadow">
+    
+                <div class="w-3/4 justify-center space-y-1 items-baseline text-xs">
+                   <p class=" font-sm text-gray-600 p-2">This is a sample for ta ppoll
+                    question and the other wordds thath will be ou onsid question and the other wordds thath will be ou onside here</p>
+                   <label class="flex gap-2 px-2">
+                    <p class="text-xs font-normal text-gray-600">Choice 1</p>
+                   </label>
+                   <label class="flex gap-2 px-2">
+                    <p class="text-xs font-normal text-gray-600">Choice 2</p>
+                   </label> <label class="flex gap-2 px-2">
+                    <p class="text-xs font-normal text-gray-600">Choice 3</p>
+                   </label>
+                </div>
+                <div class=" flex flex-col  gap-3  w-1/4 justify-center" >
+                    <button class=" w-11/12 mx-auto text-xs  font-semibold py-1.5 bg-green-200 shadow shadow-green-300 border-1 rounded border-solid border-green-500 text-green-500 transition-opacity ease-in-out delay-150 hover:text-green-50 hover:bg-green-500">Update</button>
+                    <button class=" w-11/12 mx-auto text-xs  font-semibold py-1.5 bg-red-200 shadow shadow-red-300 border-1 rounded border-solid border-red-500 text-red-600 transition-opacity ease-in-out delay-150 hover:text-red-50 hover:bg-red-600">Delete</button>
+
+                </div>
+                
+    
+            </div> 
+
+            <div class="flex gap-4-baseline w-11/12 mx-auto bg-white  p-2 rounded shadow">
+    
+                <div class="w-3/4 justify-center space-y-1 items-baseline text-xs">
+                   <p class=" font-sm text-gray-600 p-2">This is a sample for ta ppoll
+                    question and the other wordds thath will be ou onsid question and the other wordds thath will be ou onside here</p>
+                   <label class="flex gap-2 px-2">
+                    <p class="text-xs font-normal text-gray-600">Choice 1</p>
+                   </label>
+                   <label class="flex gap-2 px-2">
+                    <p class="text-xs font-normal text-gray-600">Choice 2</p>
+                   </label> <label class="flex gap-2 px-2">
+                    <p class="text-xs font-normal text-gray-600">Choice 3</p>
+                   </label>
+                </div>
+                <div class=" flex flex-col  gap-3  w-1/4 justify-center" >
+                    <button class=" w-11/12 mx-auto text-xs  font-semibold py-1.5 bg-green-200 shadow shadow-green-300 border-1 rounded border-solid border-green-500 text-green-500 transition-opacity ease-in-out delay-150 hover:text-green-50 hover:bg-green-500">Update</button>
+                    <button class=" w-11/12 mx-auto text-xs  font-semibold py-1.5 bg-red-200 shadow shadow-red-300 border-1 rounded border-solid border-red-500 text-red-600 transition-opacity ease-in-out delay-150 hover:text-red-50 hover:bg-red-600">Delete</button>
+
+                </div>
+                
+    
+            </div> 
+
+            <div class="flex gap-4-baseline w-11/12 mx-auto bg-white  p-2 rounded shadow">
+    
+                <div class="w-3/4 justify-center space-y-1 items-baseline text-xs">
+                   <p class=" font-sm text-gray-600 p-2">This is a sample for ta ppoll
+                    question and the other wordds thath will be ou onsid question and the other wordds thath will be ou onside here</p>
+                   <label class="flex gap-2 px-2">
+                    <p class="text-xs font-normal text-gray-600">Choice 1</p>
+                   </label>
+                   <label class="flex gap-2 px-2">
+                    <p class="text-xs font-normal text-gray-600">Choice 2</p>
+                   </label> <label class="flex gap-2 px-2">
+                    <p class="text-xs font-normal text-gray-600">Choice 3</p>
+                   </label>
+                </div>
+                <div class=" flex flex-col  gap-3  w-1/4 justify-center" >
+                    <button class=" w-11/12 mx-auto text-xs  font-semibold py-1.5 bg-green-200 shadow shadow-green-300 border-1 rounded border-solid border-green-500 text-green-500 transition-opacity ease-in-out delay-150 hover:text-green-50 hover:bg-green-500">Update</button>
+                    <button class=" w-11/12 mx-auto text-xs  font-semibold py-1.5 bg-red-200 shadow shadow-red-300 border-1 rounded border-solid border-red-500 text-red-600 transition-opacity ease-in-out delay-150 hover:text-red-50 hover:bg-red-600">Delete</button>
+
+                </div>
+                
+    
+            </div> 
+
+            
+
+           
+        </div>
+        
+  
+
+    </div>
+</div>

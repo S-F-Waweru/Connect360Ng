@@ -8,6 +8,14 @@ import { PollsComponent } from './polls/polls.component';
 import { AddPollComponent } from './add-poll/add-poll.component';
 import { UpdatePollComponent } from './update-poll/update-poll.component';
 import { PollComponent } from './poll/poll.component';
+import { ViewsComponent } from './views/views.component';
+import { AddViewsComponent } from './add-views/add-views.component';
+import { UpdateViewsComponent } from './update-views/update-views.component';
+import { ViewComponent } from './view/view.component';
+import { IncidentsComponent } from './incidents/incidents.component';
+import { IncidentComponent } from './incident/incident.component';
+import { AddIncidentComponent } from './add-incident/add-incident.component';
+import { UpdateIncidentComponent } from './update-incident/update-incident.component';
 
 export const routes: Routes = [
         {path:'', component:HomepageComponent} ,
@@ -21,10 +29,19 @@ export const routes: Routes = [
         {path:'poll/:id', component:PollComponent} ,
         {path:'add', component:AddPollComponent} ,
         {path:'update', component:UpdatePollComponent} ,
+]},
+        {path:'views', children:[
+                {path:'', component:ViewsComponent} ,
+                {path:'view/:id', component:ViewComponent} ,
+                {path:'add', component:AddViewsComponent} ,
+                {path:'update', component:UpdateViewsComponent} ,
+        ]} ,
 
-
-
-
+        {path:'incidents', children:[
+                {path:'', component:IncidentsComponent} ,
+                {path:'incident/:id', component:IncidentComponent} ,
+                {path:'add', component:AddIncidentComponent} ,
+                {path:'update', component:UpdateIncidentComponent} ,
         ]} ,
 
 
