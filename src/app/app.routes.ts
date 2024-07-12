@@ -16,6 +16,10 @@ import { IncidentsComponent } from './incidents/incidents.component';
 import { IncidentComponent } from './incident/incident.component';
 import { AddIncidentComponent } from './add-incident/add-incident.component';
 import { UpdateIncidentComponent } from './update-incident/update-incident.component';
+import { EducateComponent } from './educate/educate.component';
+import { CitizenDashComponent } from './citizen-dash/citizen-dash.component';
+import { GovDashComponent } from './gov-dash/gov-dash.component';
+import { AdminDashComponent } from './admin-dash/admin-dash.component';
 
 export const routes: Routes = [
         {path:'', component:HomepageComponent} ,
@@ -43,6 +47,14 @@ export const routes: Routes = [
                 {path:'add', component:AddIncidentComponent} ,
                 {path:'update', component:UpdateIncidentComponent} ,
         ]} ,
+
+        {path:'educate', component:EducateComponent},
+        {path:'citizen', component:CitizenDashComponent},
+        {path:'gov', component:GovDashComponent},
+        {path:'admin', component:AdminDashComponent}
+
+
+
 
 
 

@@ -16,7 +16,7 @@
 
 
        <!-- //card -->
-       <div class=" flex w-11/12 h-44 mx-auto bg-red-100 rounded-sm shadow p-2">
+       <div class=" flex w-11/12 h-44 mx-auto bg-white rounded-sm shadow p-2">
        <div class="w-1/2">
         
         <p class="font-semibold  text-gray-700 text-base py-2">The Theft</p>
@@ -34,14 +34,14 @@
         [routerLinkActiveOptions]="{exact:true}"
         >Read More</button>
        </div>
-       <div class="w-1/2  m-2 bg-red-100">
+       <div class="w-1/2  m-2 bg-white">
         <img class="w-full h-full items-center m-auto object-fill rounded shadow-lg"  src="https://images.unsplash.com/photo-1605806616949-1e87b487fc2f?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" srcset="">
        </div>
        </div>
        
 
 
-       <div class=" flex w-11/12 h-44 mx-auto bg-red-100 rounded-sm shadow p-2">
+       <div class=" flex w-11/12 h-44 mx-auto bg-white rounded-sm shadow p-2">
         <div class="w-1/2">
          
          <p class="font-semibold  text-gray-700 text-base py-2">The Theft</p>
@@ -52,10 +52,13 @@
          </div>
          <button class="border-gray-700 border-2 w-full py-2 text-sm font-semibold rounded shadow shadow-gray-100
          transition ease-in-out delay-75
-         hover:bg-gray-700 hover:text-white
-         ">Read More</button>
+         hover:bg-gray-700 hover:text-white"
+         [routerLink]="['/incidents', 'incident', 'happy']"
+                   routerLinkActive="['active']"
+        [routerLinkActiveOptions] = "{exact:true}"
+         >Read More</button>
         </div>
-        <div class="w-1/2  m-2 bg-red-100">
+        <div class="w-1/2  m-2 bg-white">
          <img class="w-full h-full items-center m-auto object-fill rounded shadow-lg"  src="https://images.unsplash.com/photo-1605806616949-1e87b487fc2f?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" srcset="">
         </div>
         </div>
