@@ -5,6 +5,8 @@ import { AppState } from '../State';
 import { AuthAction } from '../State/Actions/auth.actions';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
+import { AuthService } from '../Services/auth.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +18,10 @@ import { Router, RouterModule } from '@angular/router';
 export class LoginComponent {
 
 
-  constructor( private store:Store<AppState>){}
+  constructor( private store:Store<AppState>,
+    private as:AuthService,
+    private toastr:ToastrService
+  ){}
   form!: FormGroup
   
   ngOnInit(): void {
@@ -31,7 +36,10 @@ export class LoginComponent {
 
 
   onSubmit(){
-    this.store.dispatch(AuthAction.login({user:this.form.value}))
+    console.log(this.form.value)
+    this.as.login(this.form.value)
+    // this.toastr.success('User Log in successfully', 'success')
+    // this.store.dispatch(AuthAction.login({user:this.form.value}))
   }
 
   

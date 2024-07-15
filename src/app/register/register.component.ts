@@ -5,6 +5,8 @@ import { AppState } from '../State';
 import { AuthAction } from '../State/Actions/auth.actions';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { AuthService } from '../Services/auth.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-register',
@@ -16,7 +18,10 @@ import { RouterModule } from '@angular/router';
 export class RegisterComponent implements OnInit {
   form! : FormGroup
 
-  constructor( private store:Store<AppState>){}
+  constructor( 
+    private as:AuthService,
+    private toastr :ToastrService
+  ){}
 
 
 
@@ -25,19 +30,28 @@ export class RegisterComponent implements OnInit {
    this.form = new FormGroup({
     Username :new FormControl(null, Validators.required),
     Email : new FormControl(null,[Validators.required, Validators.email] ),
-    Password : new FormControl(null,[Validators.required,this.passwordValidator.bind(this) ])
+    Password : new FormControl(null,[Validators.required,this.passwordValidator.bind(this) ]),
+    Role :new FormControl(null, Validators.required),
    }
 
    ) 
   }
 
-
-
   onSubmit(){
-    const{Username, Email,Password} = this.form.value
-    const user = {Username, Email, Password}
-    this.store.dispatch(AuthAction.register({user:user}))
+    console.log(this.form.value);
+    this.as.register(this.form.value)
+    this.toastr.success('User Added sucefully', 'success')
+    console.log()
+    this.as.getUsers()
+    
   }
+
+
+  // onSubmit(){
+  //   const{Username, Email,Password} = this.form.value
+  //   const user = {Username, Email, Password}
+  //   this.store.dispatch(AuthAction.register({user:user}))
+  // }
 
   
   /// password Validator

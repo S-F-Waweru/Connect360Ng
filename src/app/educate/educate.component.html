@@ -17,9 +17,10 @@
     </div>
     <div class="w-full h-full bg-gray-300 space-y-2  space-x-2  flex flex-col justify-end p-2">
        <div class=" flex justify-between gap-2 ">
-        <input class=" px-2 rounded-sm shadow-inner w-10/12">
+        <form (ngSubmit)="onSubmit()">
+        <input class=" px-2 rounded-sm shadow-inner w-10/12" formControlName="Question">
         <button class="h-1/12 rounded-sm shadow-sm text-white font-medium w-2/12 bg-gray-700 p-1 mx-auto">Go</button>
-    
+    </form>
        </div>
        </div>
    

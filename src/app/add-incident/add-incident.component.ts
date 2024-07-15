@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { ReactiveFormsModule, FormsModule, FormGroup, FormBuilder, Validators, FormArray, FormControl } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { IncidentsService } from '../Services/incidents.service';
 
 @Component({
   selector: 'app-add-incident',
@@ -14,23 +15,26 @@ import { RouterModule } from '@angular/router';
 export class AddIncidentComponent {
   form!:FormGroup
   constructor(
-    private fb:FormBuilder
+    private fb:FormBuilder,
+    private is :IncidentsService
   ){}
 
   ngOnInit(): void {
     this.form = new FormGroup({
-      Title: this.fb.control(null, Validators.required),
-      Choices : this.fb.array([])
+      Incident:this.fb.control(null, Validators.required),
+      Description:this.fb.control(null, Validators.required),
+      PhotoUrl:this.fb.control(null, Validators.required),
+      Location:this.fb.control(null, Validators.required), 
     })
   }
 
 
-  get choices():FormArray {
-    return this.form.get('Choices') as FormArray;
+  
+  onSubmit(){
+    const id = Math.floor(Math.random()*1000)
+    const newIncident = {id, ...this.form.value} 
+
+    this.is.addIncident(newIncident)
   }
-  addChoice(){
-    this.choices.push(new FormControl('', Validators.required))
-  }
-  onSubmit(){}
 
 }

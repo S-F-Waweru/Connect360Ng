@@ -1,61 +1,63 @@
 <div class="w-full h-5/6 text-xs text-gray-600  bg-gray-300 shadow flex flex-col gap-2 md:flex-row">
     <div class="w-full md:w-1/2 h-11/12 ">
-    <p class="p-4 font-semibold text-lg">Add View</p>
-    <form (ngSubmit)="onSubmit()" [formGroup]="form"
-        class="w-11/12 mx-auto bg-gray-100 p-4 rounded shadow justify-center flex flex-col align-baseline items-baseline  gap-4">
-        <div class=" flex flex-col gap-2 w-full ">
-            <label class="font-semibold text-sm ">Title</label>
-            <input type="text" class="rounded p-1.5 border-2 shadow-gray-300" placeholder=" Title">
-        </div>
-        <div class=" flex flex-col gap-2 w-full ">
-            <label class="font-semibold text-sm "> Body</label>
-            <textarea type="text" cols="3" rows="7" class="rounded p-1.5 border-2 shadow-gray-300" placeholder="Content"></textarea>
-        </div>
-       
-        <div class="bg-gray-800 text-white w-full py-2 text-center rounded shadow-md font-semibold text-sm">
-            <button>Add View</button>
-        </div>
-    </form>
+        <p class="p-4 font-semibold text-lg">Add View</p>
+        <form (ngSubmit)="onSubmit()" [formGroup]="form"
+            class="w-11/12 mx-auto bg-gray-100 p-4 rounded shadow justify-center flex flex-col align-baseline items-baseline  gap-4">
+            <div class=" flex flex-col gap-2 w-full "> <span
+                    *ngIf="form.get('Title')?.touched && !form.get('Title')?.valid"
+                    class="text-xs bg-red-100 p-2 rounded border-red-400 border-solid text-rose-700  ">Title is
+                    Required</span>
+                <label class="font-semibold text-sm ">Title</label>
+                <input type="text" class="rounded p-1.5 border-2 shadow-gray-300" placeholder=" Title">
+            </div>
+            <div class=" flex flex-col gap-2 w-full "> <span
+                    *ngIf="form.get('Body')?.touched && !form.get('Body')?.valid"
+                    class="text-xs bg-red-100 p-2 rounded border-red-400 border-solid text-rose-700  ">Body is
+                    Required</span>
+                <label class="font-semibold text-sm "> Body</label>
+                <textarea type="text" cols="3" rows="7" class="rounded p-1.5 border-2 shadow-gray-300"
+                    placeholder="Content"></textarea>
+            </div>
+
+            <div class="bg-gray-800 text-white w-full py-2 text-center rounded shadow-md font-semibold text-sm">
+                <button [disabled]="form.invalid">Add View</button>
+            </div>
+        </form>
     </div>
     <div class="w-full md:w-1/2 h-11/12 overflow-y-scroll  ">
         <p class="px-4 pt-4 font-semibold text-md ">Your Views</p>
 
         <div class="w-full grid grid-cols-1 gap-3 h-10/12 my-4  ">
             <div class="flex gap-4-baseline w-11/12 mx-auto bg-white  p-2 rounded shadow">
-    
+
                 <div class="w-3/4 justify-center space-y-1 items-baseline text-xs">
-                   <p class=" font-sm text-gray-600 font-semibold p-2">The Bill should be rejected....</p>
-                   <label class="flex gap-2 px-2">
-                   <button
-                   class="border-gray-700 border-2 w-full mx-auto py-2 text-sm font-semibold rounded shadow shadow-gray-100
+                    <p class=" font-sm text-gray-600 font-semibold p-2">The Bill should be rejected....</p>
+                    <label class="flex gap-2 px-2">
+                        <button class="border-gray-700 border-2 w-full mx-auto py-2 text-sm font-semibold rounded shadow shadow-gray-100
                    transition ease-in-out delay-75
-                   hover:bg-gray-700 hover:text-white"
-                   [routerLink]="['/views', 'view', 'happy']"
-                   routerLinkActive="['active']"
-        [routerLinkActiveOptions] = "{exact:true}"
-                   >Read More</button>
-                   </label>
+                   hover:bg-gray-700 hover:text-white" [routerLink]="['/views', 'view', 'happy']"
+                            routerLinkActive="['active']" [routerLinkActiveOptions]="{exact:true}">Read More</button>
+                    </label>
                 </div>
-                <div class=" flex flex-col  gap-3  w-1/4 justify-center" >
-                    <button 
-                    [routerLink]="['/views', 'update']"
-                   routerLinkActive="['active']"
-        [routerLinkActiveOptions] = "{exact:true}"
-                    class=" w-11/12 mx-auto text-xs  font-semibold py-1.5 bg-green-200 shadow shadow-green-300 border-1 rounded border-solid border-green-500 text-green-500 transition-opacity ease-in-out delay-150 hover:text-green-50 hover:bg-green-500">Update</button>
-                    <button class=" w-11/12 mx-auto text-xs  font-semibold py-1.5 bg-red-200 shadow shadow-red-300 border-1 rounded border-solid border-red-500 text-red-600 transition-opacity ease-in-out delay-150 hover:text-red-50 hover:bg-red-600">Delete</button>
+                <div class=" flex flex-col  gap-3  w-1/4 justify-center">
+                    <button [routerLink]="['/views', 'update']" routerLinkActive="['active']"
+                        [routerLinkActiveOptions]="{exact:true}"
+                        class=" w-11/12 mx-auto text-xs  font-semibold py-1.5 bg-green-200 shadow shadow-green-300 border-1 rounded border-solid border-green-500 text-green-500 transition-opacity ease-in-out delay-150 hover:text-green-50 hover:bg-green-500">Update</button>
+                    <button
+                        class=" w-11/12 mx-auto text-xs  font-semibold py-1.5 bg-red-200 shadow shadow-red-300 border-1 rounded border-solid border-red-500 text-red-600 transition-opacity ease-in-out delay-150 hover:text-red-50 hover:bg-red-600">Delete</button>
 
                 </div>
-                
-    
-            </div> 
 
-      
-            
 
-           
+            </div>
+
+
+
+
+
         </div>
-        
-  
+
+
 
     </div>
 </div>

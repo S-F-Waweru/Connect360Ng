@@ -1,6 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Poll } from '../Models/Poll';
+import { PollsService } from '../Services/polls.service';
 
 @Component({
   selector: 'app-update-poll',
@@ -11,7 +13,12 @@ import { FormArray, FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFo
 })
 export class UpdatePollComponent {
   form!:FormGroup
+
+  polls!:Poll[]
+    
+
   constructor(
+    private ps : PollsService,
     private fb:FormBuilder
   ){}
 
@@ -29,5 +36,8 @@ export class UpdatePollComponent {
   addChoice(){
     this.choices.push(new FormControl('', Validators.required))
   }
-  onSubmit(){}
+  onSubmit(){
+    const id = Math.floor(Math.random()*100)
+    
+  }
 }

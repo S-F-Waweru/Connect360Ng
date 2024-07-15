@@ -1,34 +1,41 @@
 <div class="bg-gray-200 text-grey-700 w-full h-5/6 rounded-sm overflow-y-scroll no-scrollbar ">
     <h1 class="text-xl font-semibold w-full text-start px-10 py-4">All Polls</h1>
     <div class="w-full grid grid-cols-1 gap-3 h-10/12 ">
-        <div class="flex gap-4-baseline w-11/12 mx-auto bg-white  p-2 rounded shadow">
+        <div *ngIf="polls.length;else NoPolls">
+            <div *ngFor="let poll of polls">
+            <div class="flex gap-4-baseline w-11/12 mx-auto bg-white  p-2 rounded shadow">
+                <div class="w-3/4 justify-center items-baseline ">
+                    <p class=" font-sm text-gray-600 p-2">{{poll.question}}</p>
 
-            <div class="w-3/4 justify-center items-baseline ">
-               <p class=" font-sm text-gray-600 p-2">This is a sample for ta ppoll question and the other wordds thath will be ou onside here</p>
-              
-               <label class="flex gap-2 px-2">
-                <input type="radio" name="choice 1" id="">
-                <p class="text-sm font-normal text-gray-600">Choice 1</p>
-               </label>
-               <label class="flex gap-2 px-2">
-                <input type="radio" name="choice 1" id="">
-                <p class="text-sm font-normal text-gray-600">Choice 2</p>
-               </label> <label class="flex gap-2 px-2">
-                <input type="radio" name="choice 1" id="">
-                <p class="text-sm font-normal text-gray-600">Choice 3</p>
-               </label>
-               
-                
-            </div>
-            <div class="flex flex-col w-1/4 bg-gray-100 shadow-sm shadow-gray-300 justify-center items-baseline rounded
+                    <div *ngFor="let choice of poll.choices">
+                    <label class="flex gap-2 px-2">
+                        <input type="radio" name="choice 1" id="{{choice.id}}">
+                        <p class="text-sm font-normal text-gray-600">{{choice.choice}}</p>
+                    </label>
+                </div>
+
+
+                </div>
+                <!-- <div class="flex flex-col w-1/4 bg-gray-100 shadow-sm shadow-gray-300 justify-center items-baseline rounded
             p-4 gap-2
             h-11/12">
-                <p class="text-sm py-1 font-normal">choice 1 : <i class="bg-gray-200 shadow-sm  p-1 px-2 rounded-md font-semibold text-gray-900">30 Votes</i> </p>
-                <p class="text-sm py-1 font-normal">choice 2 : <i class="bg-gray-200 shadow-sm  p-1 px-2 rounded-md font-semibold text-gray-900">30 Votes</i> </p>
-                <p class="text-sm py-1 font-normal">choice 3 : <i class="bg-gray-200 shadow-sm  p-1 px-2 rounded-md font-semibold text-gray-900">30 Votes</i> </p>
+                    <p class="text-sm py-1 font-normal">choice 1 : <i
+                            class="bg-gray-200 shadow-sm  p-1 px-2 rounded-md font-semibold text-gray-900">30 Votes</i>
+                    </p>
+                    <p class="text-sm py-1 font-normal">choice 2 : <i
+                            class="bg-gray-200 shadow-sm  p-1 px-2 rounded-md font-semibold text-gray-900">30 Votes</i>
+                    </p>
+                    <p class="text-sm py-1 font-normal">choice 3 : <i
+                            class="bg-gray-200 shadow-sm  p-1 px-2 rounded-md font-semibold text-gray-900">30 Votes</i>
+                    </p>
+
+                </div> -->
 
             </div>
-
-        </div> 
+        </div>
+        </div>
+        <ng-template #NoPolls>
+            <p>No Polls</p>
+        </ng-template>
     </div>
 </div>

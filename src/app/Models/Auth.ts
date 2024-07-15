@@ -1,3 +1,10 @@
+export interface User {
+    UserId : number
+    Username:string,
+    Email:string,
+    Role:string,
+    Password:string
+}
 
 export interface LoginRequest {
     Email:string,
@@ -14,6 +21,7 @@ export interface LoginResponse {
 export interface RegisterRequest {
     Username:string,
     Email:string,
+    Role:string,
     Password:string
 }
 

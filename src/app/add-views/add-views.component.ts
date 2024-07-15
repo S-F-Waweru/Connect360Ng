@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormArray, FormControl, ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
+import { ViewsService } from '../Services/views.service';
 
 @Component({
   selector: 'app-add-views',
@@ -14,23 +15,23 @@ import { RouterModule } from '@angular/router';
 export class AddViewsComponent {
   form!:FormGroup
   constructor(
-    private fb:FormBuilder
+    private fb:FormBuilder,
+    private vs:ViewsService
   ){}
 
   ngOnInit(): void {
     this.form = new FormGroup({
       Title: this.fb.control(null, Validators.required),
-      Choices : this.fb.array([])
+      Body : this.fb.control(null, Validators.required),
     })
   }
 
 
-  get choices():FormArray {
-    return this.form.get('Choices') as FormArray;
+ 
+  onSubmit(){
+    const id = Math.floor(Math.random()*1000)
+    const newView = {id, ...this.form.value}
+    this.vs.addView(newView)
   }
-  addChoice(){
-    this.choices.push(new FormControl('', Validators.required))
-  }
-  onSubmit(){}
 
 }

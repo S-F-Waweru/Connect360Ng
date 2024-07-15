@@ -39,10 +39,22 @@ class=" w-full flex flex-col gap-4 justify-start items-start">
         <input type="text" class="border-2 border-gray-300 rounded p-1">
 
     </div>
+    <div class="flex flex-col gap-1 w-full p2  text-sm">
+        <span *ngIf="form.get('Password')?.touched && !form.get('Password')?.valid"
+        class="text-xs bg-red-100 p-2 rounded border-red-400 border-solid text-rose-700  ">Password is Required</span>
+       
+        <label for="role" class="font-medium text-sm text-gray-500">Role</label>
+    <select formControlName="Role" class="border-2 border-gray-300 rounded p-1">
+        <option value="">Select Role</option>
+        <option value="Citizen">Citizen</option>
+        <option value="Government Official">Government Official</option>
+    </select>
+
+    </div>
 
     <button
     class="bg-gray-800 text-white w-full py-2 rounded shadow-lg font-semibold text-sm transition ease-out delay-100 hover:bg-green-500 disabled:bg-gray-400 disabled:cursor-not-allowed" 
-    disabled = "form.invalid"
+    [disabled] = "form.invalid"
     >Create Account</button>
    <p
    class="w-full items-center text-sm  text-center  mb-4">Alreadyhave an account? <a 

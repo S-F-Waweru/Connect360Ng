@@ -4,12 +4,34 @@
     <img class="sm:block  cursor-pointer text-md w-8 h-8  md:hidden" src="../../assets/menu-outline.svg" alt="menu-svg">
 
     <div class=" space-x-4 hidden md:flex-row md:flex">
-        <a  
-        [routerLink] = "['']" 
-        routerLinkActive="['active']"
-        routerLinkActiveOptions = "{exact:true}"
+        <div *ngIf="userRole === 'Citizen';">
+            <a  
+            [routerLink] = "['/citizen']" 
+            routerLinkActive="['active']"
+            routerLinkActiveOptions = "{exact:true}"
+            
+            class="text-gray-500 hover:text-gray-800" >Dashboard</a>
+        </div>
+
+        <div *ngIf="userRole === ''" #Home>
+            <a  
+            [routerLink] = "['']" 
+            routerLinkActive="['active']"
+            routerLinkActiveOptions = "{exact:true}"
+            
+            class="text-gray-500 hover:text-gray-800" >Home</a>
+        </div>
         
-        class="text-gray-500 hover:text-gray-800" >Home</a>
+        <div *ngIf="userRole == 'Admin';"  #Admin>
+            <a  
+            [routerLink] = "['']" 
+            routerLinkActive="['active']"
+            routerLinkActiveOptions = "{exact:true}"
+            
+            class="text-gray-500 hover:text-gray-800" >Admin</a>
+        </div>
+       
+       
         <a  
         [routerLink] = "['educate']" 
         routerLinkActive="['active']"
@@ -31,7 +53,7 @@
         routerLinkActiveOptions = "{exact:true}"    
         class="text-gray-500 hover:text-gray-800"  >Incidents</a>
     </div>
-    <div class="hidden space-x-4  md:flex-row md:flex  items-center">
+    <div *ngIf="userRole === 'Citizen';else Logout"  class="hidden space-x-4  md:flex-row md:flex  items-center">
         <a
 
         [routerLink] = "['login']" 
@@ -52,3 +74,30 @@
         >Register</a>
     </div>
 </div>
+
+
+
+
+
+
+<ng-template  class="hidden space-x-4  md:flex-row md:flex  items-center" #Logout>
+    <!-- <a
+
+    [routerLink] = "['login']" 
+    routerLinkActiveOptions = "{exact:true}"  
+
+    class=" px-4 py-1 rounded  border-solid border-2 border-gray-800 
+    transition ease-in-out delay-50
+    hover:bg-gray-800 hover:text-white"
+    >Login</a> -->
+    <a 
+
+    [routerLink] = "['register']" 
+    routerLinkActiveOptions = "{exact:true}"  
+
+    class ="bg-gray-800 text-white px-4 py-1 shadow shadow-gray-400  rounded border-solid border-2 border-gray-800 
+    transition ease-in-out delay-50
+    hover:bg-green-500  hover:border-green-500"
+    >Logout</a>
+    </ng-template>
+    
