@@ -1,16 +1,16 @@
 <div class="bg-gray-200 text-grey-700 w-full h-5/6 rounded-sm overflow-y-scroll no-scrollbar ">
     <h1 class="text-xl font-semibold w-full text-start px-10 py-4">All Polls</h1>
     <div class="w-full grid grid-cols-1 gap-3 h-10/12 ">
-        <div *ngIf="polls.length;else NoPolls">
+        <div *ngIf="polls$| async as polls;else NoPolls">
             <div *ngFor="let poll of polls">
             <div class="flex gap-4-baseline w-11/12 mx-auto bg-white  p-2 rounded shadow">
                 <div class="w-3/4 justify-center items-baseline ">
-                    <p class=" font-sm text-gray-600 p-2">{{poll.question}}</p>
+                    <p class=" font-sm text-gray-600 p-2">{{poll.Question}}</p>
 
-                    <div *ngFor="let choice of poll.choices">
+                    <div *ngFor="let choice of poll.Choices">
                     <label class="flex gap-2 px-2">
-                        <input type="radio" name="choice 1" id="{{choice.id}}">
-                        <p class="text-sm font-normal text-gray-600">{{choice.choice}}</p>
+                        <input type="radio" name="choice 1" id="{{choice.Id}}">
+                        <p class="text-sm font-normal text-gray-600">{{choice.Choice}}</p>
                     </label>
                 </div>
 
@@ -34,8 +34,32 @@
             </div>
         </div>
         </div>
+
+        <!-- <ng-template #NoPolls>
+            <div class="h-w-full flex flex-col justify-center gap-4 p-12 bg-gray-300 items-center">
+                <p class="text-3xl shadow-sm font-bold italic">No Polls Yet</p>
+                <button
+                [routerLink] = "['/polls', 'add']" 
+            routerLinkActive="['active']"
+            routerLinkActiveOptions = "{exact:true}"
+            ngIf="userRole === 'Gov"
+                class="bg-gray-700 px-8 py-2 rounded shadow  text-white font-semibold" >Add Poll</button>
+            </div>
+          
+        </ng-template> -->
         <ng-template #NoPolls>
-            <p>No Polls</p>
+            <div class="h-w-full flex flex-col justify-center gap-4 p-12 bg-gray-300 items-center">
+                <p class="text-3xl shadow-sm font-bold italic">No Polls Yet</p>
+                <button
+                    *ngIf="userRole === 'Gov'"
+                    [routerLink]="['/polls', 'add']" 
+                    routerLinkActive="active"
+                    routerLinkActiveOptions="{exact: true}"
+                    class="bg-gray-700 px-8 py-2 rounded shadow text-white font-semibold">
+                    Add Poll
+                </button>
+            </div>
         </ng-template>
+        
     </div>
 </div>

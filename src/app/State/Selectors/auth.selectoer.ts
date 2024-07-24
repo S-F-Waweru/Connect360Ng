@@ -28,3 +28,15 @@ export const successRegisterSelectoer = createSelector(
     authSelectoerFeature,
     (state) => state.registerSuccessMessage
 )
+
+export const getAllUserSelector = createSelector(
+    authSelectoerFeature,
+    (state) => state.getUsersSuccessMessage
+)
+console.log("After");
+console.log(getAllUserSelector )
+
+export const getUserSelector = createSelector(
+    authSelectoerFeature,
+    (state) => state.getUsersSuccessMessage
+)

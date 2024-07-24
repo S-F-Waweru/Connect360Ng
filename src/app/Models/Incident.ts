@@ -1,7 +1,17 @@
 export interface Incident {
-    Id:number,
-    Incident:String,
-    Description:String,
-    PhotoUrl:String,
-    Location:String
+    Id:string,
+    Incident:string,
+    Description:string,
+    PhotoUrl:string,
+    Location:string
+}
+
+export interface IncidentRequest {
+    Incident:string,
+    Description:string,
+    PhotoUrl:string,
+    Location:string
+}
+export interface IncidentResponse {
+    Message : string
 }

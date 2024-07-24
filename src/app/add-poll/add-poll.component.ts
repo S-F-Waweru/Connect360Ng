@@ -1,6 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import { AppState } from '../State';
+import { AuthAction } from '../State/Actions/auth.actions';
+import { PollsActions } from '../State/Actions/polls.actions';
 
 @Component({
   selector: 'app-add-poll',
@@ -12,7 +16,8 @@ import { FormArray, FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFo
 export class AddPollComponent implements OnInit {
   form!:FormGroup
   constructor(
-    private fb:FormBuilder
+    private fb:FormBuilder,
+    private store:Store<AppState>
   ){}
 
   ngOnInit(): void {
@@ -29,7 +34,12 @@ export class AddPollComponent implements OnInit {
   addChoice(){
     this.choices.push(new FormControl('', Validators.required))
   }
+
+  removeChoice(i:number){
+    this.choices.removeAt(i);
+  }
   onSubmit(){
-    
+    console.log(this.form.value)
+    this.store.dispatch(PollsActions.pollsAdd({poll:this.form.value}))
   }
 }

@@ -1,35 +1,35 @@
 import { Injectable } from '@angular/core';
-import { Incident } from '../Models/Incident';
+import { Incident, IncidentRequest, IncidentResponse } from '../Models/Incident';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class IncidentsService {
-  incidents :Incident[]= []
-  constructor() { }
+  constructor(
+    private http :HttpClient,
+  ){}
 
-  allIncidents(){
-    return this.incidents
+  private readonly baseURL='http://localhost:2000'
+
+  addIncident(addincident:IncidentRequest):Observable<IncidentResponse>{
+    return this.http.post<IncidentResponse>(this.baseURL +  '/incidents/' +'add' , addincident)
   }
-  addIncident(newIncident:Incident){
-    this.incidents.push(newIncident)
+
+  getIncident(Id :string):Observable<Incident>{
+    return  this.http.get<Incident>(this.baseURL + '/incidents/' + Id)
   }
-  getIncident(Id:number){
-    const incident = this.incidents.find(i=> i.Id == Id)
-    if(!incident){
-      console.log('No Incidents')
-      return
-    }
-    return incident
+  getIncidents():Observable<Incident[]>{
+    return  this.http.get<Incident[]>(this.baseURL + '/incidents/' )
   }
-  deleteIncidents(id:number){
-      return this.incidents.filter(i=> i.Id === id)
+  updateIncident(Id:string, updatedincident:Incident):Observable<IncidentResponse>{
+    return  this.http.put<IncidentResponse>(this.baseURL + '/incidents/' + Id , updatedincident )
+
   }
-  updateIncidents(id:number, updatedIncident:Incident){
-    this.incidents.find(i=> {
-      if(i.Id=== id){
-          i = updatedIncident
-      }
-    })
+  deleteIncident(Id :string):Observable<IncidentResponse>{
+    return  this.http.delete<IncidentResponse>(this.baseURL + '/incidents/' + Id)
   }
+
 }
+

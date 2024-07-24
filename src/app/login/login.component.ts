@@ -5,8 +5,10 @@ import { AppState } from '../State';
 import { AuthAction } from '../State/Actions/auth.actions';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
-import { AuthService } from '../Services/auth.service';
+// import { AuthService } from '../Services/auth.service';
 import { ToastrService } from 'ngx-toastr';
+
+
 
 @Component({
   selector: 'app-login',
@@ -19,8 +21,8 @@ export class LoginComponent {
 
 
   constructor( private store:Store<AppState>,
-    private as:AuthService,
-    private toastr:ToastrService
+    private route:Router
+  
   ){}
   form!: FormGroup
   
@@ -37,9 +39,10 @@ export class LoginComponent {
 
   onSubmit(){
     console.log(this.form.value)
-    this.as.login(this.form.value)
+    // this.as.login(this.form.value)
+    this.route.navigate([''])
     // this.toastr.success('User Log in successfully', 'success')
-    // this.store.dispatch(AuthAction.login({user:this.form.value}))
+    this.store.dispatch(AuthAction.login({user:this.form.value}))
   }
 
   

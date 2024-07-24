@@ -1,34 +1,33 @@
 import { Injectable } from '@angular/core';
-import { Educate, EducateQuestion, EducateResult } from '../Models/Educate';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { ViewsSummaryResponse } from '../Models/Views';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EducateService {
-  education : EducateQuestion[] = []
-  results: EducateResult[] =[]
-  constructor() { }
-  getUserQuestions(){
-    return this.education
+  constructor(
+    private http :HttpClient,
+  ){}
+// 8000/ai/views
+// 8000/ai/incidents
+// 8000/ai/educate/bill
+
+
+
+  private readonly baseURL='8000/ai/views'
+
+  summerizeViews():Observable<ViewsSummaryResponse>{
+    return this.http.get<ViewsSummaryResponse>(this.baseURL + 'views' )
   }
 
-  getAllresults(){
-    return this.results
+  summerizeIncidents():Observable<ViewsSummaryResponse>{
+    return this.http.get<ViewsSummaryResponse>(this.baseURL + 'incidents' )
   }
-  addQuestion(newInfo:Educate){
-    this.education.push(newInfo)
-  }
-  addResult(newResult:EducateResult
-  ){
-    this.results.push(newResult)
-  }
- deleteQuestion(infoID:number){
-  this.education.filter(info=> info.Id=== infoID)
-  this.results.filter(r=> r.QuestionId=== infoID)
- }
- deleteAllQuestion(){
-  this.education = []
-  this.results =[]
 
- }
+  // ai chat
+  // here
+ 
+
 }

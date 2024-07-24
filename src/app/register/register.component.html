@@ -1,5 +1,5 @@
 
-<div class="flex flex-col justify-start items-center mt-8 w-full  md:h-5/6 text-gray-800 bg-gray-300">
+<div class="flex flex-col justify-start items-center mt-8 w-full text-xs md:h-5/6 text-gray-800 bg-gray-300">
     <div class="w-1/2 min-h-5/6 bg-gray-50 m-12 rounded-md px-8 py-2 shadow-lg shadow-gray-400">
     <h3
     class="font-bold text-xl py-4 text-gray-400"
@@ -45,9 +45,9 @@ class=" w-full flex flex-col gap-4 justify-start items-start">
        
         <label for="role" class="font-medium text-sm text-gray-500">Role</label>
     <select formControlName="Role" class="border-2 border-gray-300 rounded p-1">
-        <option value="">Select Role</option>
-        <option value="Citizen">Citizen</option>
-        <option value="Government Official">Government Official</option>
+        <option value="" disabled >Select Role</option>
+        <option value="Citizen" selected >Citizen</option>
+        <option value="Gov">Government Official</option>
     </select>
 
     </div>

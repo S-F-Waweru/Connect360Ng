@@ -2,7 +2,8 @@
     <div class="flex justify-between">
         <h1 class="text-xl font-semibold w-full text-start px-10 py-4">All Views</h1>
         <button 
-        [routerLink]="['/views', 'add']"
+        *ngIf="userRole =='Citizen'"
+        [routerLink]="['add']"
         routerLinkActive=""
         [routerLinkActiveOptions]="{exact:true}"
         class="bg-white w-1/6 rounded shadow font-normal text-xs m-2 hover:border-2 border-solid border-gray-700 hover:font-semibold">Add Your view</button>
@@ -11,11 +12,41 @@
 
    
 
-<div class="flex ">
-    <div class="grid grid-cols-1 gap-1 ">
+<!-- <div *ngIf="views$ | async  as Views" class="flex "> -->
+<div *ngIf="views" class="flex ">
+
+    
+    <div class="grid grid-cols-1 gap-1  md:grid-cols-2 lg:grid-cols-3">
+        <div *ngFor="let view of views">
        <!-- //card -->
        <div class="w-11/12 mx-auto bg-gray-100 rounded-sm shadow p-2">
-        <div class="text-xs  flex gap-4 font-semibold text-gray-500">
+        <!-- <div class="text-xs  flex gap-4 font-semibold text-gray-500">
+            <p class=" flex items-baseline gap-1 bg-white shadow-sm rounded-xl py-1 px-2">
+            <i class='bx bx-upvote' style='color:#002727; font-size: 16px;'  ></i>
+            10 Upvotes</p>
+
+            <p class=" flex items-baseline gap-1 bg-white shadow-sm rounded-xl py-1 px-2">
+
+                <i class='bx bx-downvote' style='color:#002727; font-size: 16px;'  ></i>
+                10 DownVotes</p>
+        </div> -->
+        <p class="font-semibold  text-gray-700 text-base py-2">{{view.Title}}</p>
+        <p class="text-sm">{{view.Body}}</p>
+        <div class="italic text-xs font-sans py-2 text-gray-500">
+            <p>By Sam Sam</p>
+            <p>Created On: 23/12/23 </p>
+        </div>
+        <button class="border-gray-700 border-2 w-full py-2 text-sm font-semibold rounded shadow shadow-gray-100
+        transition ease-in-out delay-75
+        hover:bg-gray-700 hover:text-white
+        "
+        (click)="readMore(view.Id)"
+        >Read More</button>
+       </div>
+
+
+          <!-- <div class="w-11/12 mx-auto bg-gray-100 rounded-sm shadow p-2">
+     <div class="text-xs  flex gap-4 font-semibold text-gray-500">
             <p class=" flex items-baseline gap-1 bg-white shadow-sm rounded-xl py-1 px-2">
             <i class='bx bx-upvote' style='color:#002727; font-size: 16px;'  ></i>
             10 Upvotes</p>
@@ -37,7 +68,6 @@
         hover:bg-gray-700 hover:text-white
         ">Read More</button>
        </div>
-
 
        <div class="w-11/12 mx-auto bg-gray-100 rounded-sm shadow p-2">
         <div class="text-xs  flex gap-4 font-semibold text-gray-500">
@@ -62,7 +92,6 @@
         hover:bg-gray-700 hover:text-white
         ">Read More</button>
        </div>
-
        <div class="w-11/12 mx-auto bg-gray-100 rounded-sm shadow p-2">
         <div class="text-xs  flex gap-4 font-semibold text-gray-500">
             <p class=" flex items-baseline gap-1 bg-white shadow-sm rounded-xl py-1 px-2">
@@ -109,37 +138,15 @@
         hover:bg-gray-700 hover:text-white
         ">Read More</button>
        </div>
-       <div class="w-11/12 mx-auto bg-gray-100 rounded-sm shadow p-2">
-        <div class="text-xs  flex gap-4 font-semibold text-gray-500">
-            <p class=" flex items-baseline gap-1 bg-white shadow-sm rounded-xl py-1 px-2">
-            <i class='bx bx-upvote' style='color:#002727; font-size: 16px;'  ></i>
-            10 Upvotes</p>
 
-            <p class=" flex items-baseline gap-1 bg-white shadow-sm rounded-xl py-1 px-2">
-
-                <i class='bx bx-downvote' style='color:#002727; font-size: 16px;'  ></i>
-                10 DownVotes</p>
-        </div>
-        <p class="font-semibold  text-gray-700 text-base py-2">This will Be the Title ....</p>
-        <p class="text-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit.  commodi laborum dolorem in! Iusto...
-        </p>
-        <div class="italic text-xs font-sans py-2 text-gray-500">
-            <p>By Sam Sam</p>
-            <p>Created On: 23/12/23 </p>
-        </div>
-        <button class="border-gray-700 border-2 w-full py-2 text-sm font-semibold rounded shadow shadow-gray-100
-        transition ease-in-out delay-75
-        hover:bg-gray-700 hover:text-white
-        ">Read More</button>
-       </div>
-
-
+ -->
 
 
     </div>  
+    </div>
 
     <!-- Admin sumerize -->
-     <div class="w-1/2 flex flex-col gap-2">
+     <div *ngIf="userRole==='Gov'" class="w-1/2 flex flex-col gap-2">
     <button class="bg-green-500 w-11/12 text-white font-medium py-2  mx-auto rounded shadow">Summarize</button>
     <div class="bg-gray-700  w-11/12 h-96 overflow-auto text-white p-2 items-end mx-auto shadow-lg rounded">
         <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facere nostrum id iure! Magni veritatis quos quis eius!

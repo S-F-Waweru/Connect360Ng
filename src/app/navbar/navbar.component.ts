@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-navbar',
@@ -10,6 +11,10 @@ import { RouterLink } from '@angular/router';
   styleUrl: './navbar.component.css'
 })
 export class NavbarComponent implements OnInit {
+  constructor(
+    private route:Router,
+    private toastr :ToastrService
+  ){}
   userRole = ''
 
 ngOnInit(): void {
@@ -17,7 +22,15 @@ ngOnInit(): void {
     if (Role){
       this.userRole = Role
     }
-  
 
+
+}
+
+  
+logout(){
+  localStorage.clear()
+  
+  this.route.navigate(['']) 
+  this.toastr.info('User Logged Out.')
 }
 }

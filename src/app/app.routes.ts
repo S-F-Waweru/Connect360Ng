@@ -20,6 +20,7 @@ import { EducateComponent } from './educate/educate.component';
 import { CitizenDashComponent } from './citizen-dash/citizen-dash.component';
 import { GovDashComponent } from './gov-dash/gov-dash.component';
 import { AdminDashComponent } from './admin-dash/admin-dash.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 export const routes: Routes = [
         {path:'', component:HomepageComponent} ,
@@ -38,7 +39,7 @@ export const routes: Routes = [
                 {path:'', component:ViewsComponent} ,
                 {path:'view/:id', component:ViewComponent} ,
                 {path:'add', component:AddViewsComponent} ,
-                {path:'update', component:UpdateViewsComponent} ,
+                {path:'update/:id', component:UpdateViewsComponent} ,
         ]} ,
 
         {path:'incidents', children:[
@@ -51,7 +52,9 @@ export const routes: Routes = [
         {path:'educate', component:EducateComponent},
         {path:'citizen', component:CitizenDashComponent},
         {path:'gov', component:GovDashComponent},
-        {path:'admin', component:AdminDashComponent}
+        {path:'admin', component:AdminDashComponent},
+
+        {path:'**', component:PageNotFoundComponent}
 
 
 

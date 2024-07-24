@@ -2,21 +2,41 @@ import { Component, OnInit } from '@angular/core';
 import { Poll } from '../Models/Poll';
 import { PollsService } from '../Services/polls.service';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { AppState } from '../State';
+import { PollsActions } from '../State/Actions/polls.actions';
+import { getPollsSelector } from '../State/Selectors/polls.selector';
+
 
 @Component({
   selector: 'app-polls',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './polls.component.html',
   styleUrl: './polls.component.css'
 })
 export class PollsComponent implements OnInit{
-  polls!:Poll[]
+  // polls!:Poll[]
+  polls$ = this.store.select(getPollsSelector)
+  
+  userRole = ''
 
-  constructor(private ps : PollsService
+  constructor(
+    private store : Store<AppState>
   ){}
     
   ngOnInit(): void {
-    this.polls = this.ps.getAllPolls()
+    // all polld
+    const Role = localStorage.getItem('Role') 
+    if (Role){
+      this.userRole = Role
+    }
+
+   this.store.dispatch(PollsActions.getPolls())
+
+   //get all votes
+  //  this.store.dispatch(PollsActions.getVotes())
+  
   }
 }

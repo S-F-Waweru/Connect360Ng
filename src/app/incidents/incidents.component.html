@@ -11,11 +11,11 @@
 
    
 
-<div class="flex  ">
-    <div class="grid grid-cols-1 gap-1 w-1/2 ">
-
-
+<div class="flex flex-col md:flex-row  ">
+    <div *ngIf="incidents">
+    <div class="grid w-5/6 mx-auto grid-cols-1 gap-1  ">
        <!-- //card -->
+        <div *ngFor="let incident of incidents">  
        <div class=" flex w-11/12 h-44 mx-auto bg-white rounded-sm shadow p-2">
        <div class="w-1/2">
         
@@ -39,8 +39,8 @@
        </div>
        </div>
        
-
-
+    </div>
+<!-- 
        <div class=" flex w-11/12 h-44 mx-auto bg-white rounded-sm shadow p-2">
         <div class="w-1/2">
          
@@ -61,16 +61,18 @@
         <div class="w-1/2  m-2 bg-white">
          <img class="w-full h-full items-center m-auto object-fill rounded shadow-lg"  src="https://images.unsplash.com/photo-1605806616949-1e87b487fc2f?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" srcset="">
         </div>
-        </div>
+        </div> -->
 
         
 
 
 
     </div>  
-
+</div>
     <!-- Admin sumerize -->
-     <div class="w-1/2 flex flex-col gap-2">
+     <div
+     *ngIf="userRole === 'Gov'"
+     class="w-1/2 flex flex-col gap-2">
     <button class="bg-green-500 w-11/12 text-white font-medium py-2  mx-auto rounded shadow">Summarize</button>
     <div class="bg-gray-700  w-11/12 h-96 overflow-auto text-white p-2 items-end mx-auto shadow-lg rounded">
         <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facere nostrum id iure! Magni veritatis quos quis eius!

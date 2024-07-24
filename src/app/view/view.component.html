@@ -1,25 +1,21 @@
 <div class="w-full md:h-5/6 text-xs text-gray-600  bg-gray-200 shadow  ">
-    <div class="w-5/6 mx-auto h-full flex flex-col gap-2  ">
-    <h3 class="text-xl py-4 font-bold ">VERY VERYVE VERYVE VERYVE VERYVE VERYVE</h3>
+    <div *ngIf="view;else NoViews ">
+        
+        <div class="w-5/6 mx-auto h-full flex flex-col gap-2  ">
+            <h3 class="text-xl py-4 font-bold ">{{view.Title}}</h3>
 
-        <p class=" font-normal text-justify leading-5 text-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Praesentium ipsam autem totam possimus omnis temporibus, obcaecati tempora nostrum vel impedit beatae commodi, aspernatur hic. Consequatur aspernatur natus expedita? Ipsa, voluptate eveniet facere magnam officiis adipisci dicta earum saepe voluptatum dolore unde maxime molestiae nisi, doloribus quo ducimus tempore assumenda aut? Officia quasi sed vel nostrum? Repudiandae, quam odio! Eveniet porro consequuntur, ipsum nulla eligendi sit temporibus fuga veniam praesentium inventore eius quisquam a nostrum molestiae beatae quam? Minima suscipit nulla sed consequuntur laboriosam perspiciatis placeat cupiditate tempora molestiae iste expedita aperiam vero, a quod libero autem. Ratione, 
-           voluptatem quod molestiae animi nam similique expedita 
-           mollitia cum placeat quas fuga quia quam nemo deleniti sequi.
-            Accusantium ipsa deserunt quidem, itaque sed vitae ipsam vero eaque repudiandae a numquam inventore repellendus enim consequatur et provident aut ex? Iste quis neque ipsa nihil, veritatis in quo placeat dicta quibusdam, ratione ut obcaecati harum quae cupiditate fugiat iure consequuntur repellat? Quis voluptatem laborum voluptatibus laboriosam error numquam, veritatis perspiciatis rerum dolorum adipisci. In repellat, deserunt repellendus sequi voluptatem, quidem, dignissimos veniam dolor reprehenderit rem quasi rerum cupiditate velit. Possimus sed dolorem est modi error cumque natus ratione delectus explicabo facilis. Doloribus cupiditate velit inventore.</p>
-   
-            <div class="flex gap-4 flex-col md:flex-row justify-between mt-4">
-                <div class="flex flex-col md:flex-row text-gray-500 gap-3 ">
-                    <p>View by: <br> Sam Sam</p>
-                    <p>Created On:<br>12/12/23 Sam Sam</p>
-                </div>
-    
-                <div class="flex flex-col md:flex-row text-gray-500 gap-3 ">
-                    <button class="bg-green-400 text-white px-2 py-2 shadow text-sm rounded">Upvote</button>
-                    <button class="bg-red-500 text-white px-2 py-2 shadow text-sm rounded">DownVotes</button>
-
-                </div>
+            <p class=" font-normal text-justify leading-5 text-sm">{{view.Body}}</p>
+            <div>
+                <button
+            class="bg-gray-700 px-6 py-2 text-white rounded-sm  m-2 font-bold  shadow cursor-pointer"
+            (click)="home()">Home</button>
             </div>
-           
+            
+        </div>
+       
     </div>
-  </div>
+
+    <ng-template #NoViews>
+        <p>No Views Yet</p>
+    </ng-template>
+</div>
