@@ -27,6 +27,8 @@ export class incidentEffect {
                 }),
                 catchError(error =>{
                     this.toastr.error('Incident add Failed')
+                    console.log(error);
+                    
                     return  of(IncidentAction
                         .incidentAddFailure({message:error})
                     )
@@ -109,8 +111,8 @@ export class incidentEffect {
                     return IncidentAction.deleteIncidentSuccess({response:res})
                 }),
                 catchError(error => {
-                    this.toastr.error('Delete attempt Failed')
-                    
+                    this.toastr.error('Delete attempt Failed', error)
+                    console.log(error)
                     return of(IncidentAction
                         .deleteIncidentFailure({messege:error})
                     )

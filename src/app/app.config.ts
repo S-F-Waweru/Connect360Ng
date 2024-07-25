@@ -18,13 +18,14 @@ import { ViewsEffect } from './State/Effects/views.effects';
 import { viewsReducer } from './State/Reducers/views.reducers';
 import { IncidentAction } from './State/Actions/incidents.actions';
 import { incidentEffect } from './State/Effects/incidents.effects';
+import { incidentReducer } from './State/Reducers/incident.reducer';
 
 export const appConfig: ApplicationConfig = {
 
   providers: [provideRouter(routes),
     provideAnimations(),
     provideToastr(),
-    provideStore({auth: authReducer, polls:pollsReducer, views:viewsReducer, incidents:viewsReducer}),
+    provideStore({auth:authReducer, polls:pollsReducer, views:viewsReducer, incidents:incidentReducer}),
     provideEffects([AuthEffects , PollsEffect, ViewsEffect, incidentEffect]),
     provideHttpClient(withInterceptors([TokenInterceptor]))
     ,provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() })]

@@ -9,32 +9,32 @@
                 <td class="p-2">User Action</td>
             </tr>
         </thead>
-        <tbody class="bg-gray-100 text-xs ">
+        <tbody class="bg-gray-100 text-xs  w-full">
            
-            <div *ngIf="(users$ | async) as users">
+            <div *ngIf="users">
                 <div *ngFor="let user of users">
-                    <tr class="border-y-2 border-gray-300 shadow-sm">
-                        <td class="p-2">{{users.length}}</td>
-                        <td class="p-2">citizen</td>
-                        <td class="p-2">Default</td>
+                    <tr class="border-y-2 border-gray-300 w-full shadow-sm">
+                        <td class="p-2">{{user.Username}}</td>
+                        <td class="p-2">{{user.Id}}</td>
+                        <td class="p-2">{{user.Role}}</td>
                         <td class="p-2">
-                            <div *ngIf="user.RoleStatus ==='Pending';else Default">
+                            <div *ngIf="user.RoleStatus ==='Pending';">
                                 <button class="bg-green-700 text-white px-4 py-2 rounded shadow disabled:bg-gray-400" 
-                                (click)="approve(user.UserId)"
+                                (click)="approve(user.Id)"
                                 >Approve</button>
                             </div>
-                            <div *ngIf="user.RoleStatus ==='Approved';else Default">
+                            <div *ngIf="user.RoleStatus ==='Approved';">
                                 <button class="bg-green-700 text-white px-4 py-2 rounded shadow disabled:bg-gray-400" 
-                                (click)="revoke(user.UserId)"
+                                (click)="revoke(user.Id)"
                                 >Revoke</button>
                             </div>
 
-                            <ng-template #Default>
+                            <!-- <ng-template #Default>
                                 <div>
                                     <button class="bg-green-700 text-white px-4 py-2 rounded shadow disabled:bg-gray-400" [disabled]=" true"
                               >Apporove</button>
                                 </div>
-                            </ng-template>
+                            </ng-template> -->
                             </td>
                             
                         <td class="p-2"><button class="bg-red-700 text-white px-4 py-2 rounded shadow">Delete User</button></td>

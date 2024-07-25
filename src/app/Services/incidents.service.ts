@@ -28,7 +28,7 @@ export class IncidentsService {
 
   }
   deleteIncident(Id :string):Observable<IncidentResponse>{
-    return  this.http.delete<IncidentResponse>(this.baseURL + '/incidents/' + Id)
+    return  this.http.delete<IncidentResponse>(this.baseURL + '/incidents/delete/' + Id)
   }
 
 }

@@ -10,14 +10,14 @@ export class PollsService {
   constructor(
     private http:HttpClient
   ){}
-  private readonly baseUrl ="http://localhost:2000/polls/"
+  private readonly baseUrl ="http://localhost:2000/polls"
 
   //add poll
   addPoll(addPoll:PollRequest):Observable<PollsResponse>{
     console.log(addPoll);
     
     console.log('Adding Polls')
-    return this.http.post<PollsResponse>(this.baseUrl  + 'add', addPoll)  
+    return this.http.post<PollsResponse>(this.baseUrl  + '/add', addPoll)  
   }
   //getpolls
   getPolls():Observable<Poll[]>{
@@ -31,9 +31,9 @@ export class PollsService {
   }
 
   vote(vote:VoteRequest):Observable<VoteResponse>{
-    return this.http.post<VoteResponse>(this.baseUrl + 'vote' ,vote)  
+    return this.http.post<VoteResponse>(this.baseUrl + '/vote' ,vote)  
   }  
   getVotes():Observable<Vote[]>{
-    return this.http.get<Vote[]>(this.baseUrl + 'votes')  
+    return this.http.get<Vote[]>(this.baseUrl + '/votes')  
   }
 }

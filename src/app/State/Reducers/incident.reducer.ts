@@ -8,8 +8,9 @@ const emptyIncident = {
     Id: '',
     Incident: '',
     Description: '',
-    PhotoUrl: '',
-    Location: ''
+    ImageURL: '',
+    Location: '',
+    UserId :''
 }
 
 export interface IncidentInterface {
@@ -130,10 +131,10 @@ export const incidentReducer = createReducer(
         }
     }),
 
-    on(IncidentAction.getIncidentsSuccess, (state, action) => {
+    on(IncidentAction.getIncidentsSuccess, (state, {incidents}) => {
         return {
             ...state,
-            getIncidentsSuccessMessage: action.incidents,
+            getIncidentsSuccessMessage:incidents,
             getIncidentsErrorMessage: '',
             getIncidentsLoading: false,
         }

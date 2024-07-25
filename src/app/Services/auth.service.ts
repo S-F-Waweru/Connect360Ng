@@ -43,6 +43,7 @@ export class AuthService {
   }
 
   approveGov(Id :string):Observable<{message:string}>{
+    console.log(Id)
     return this.http.get<{message:string}>(this.baseUrl + '/approve/'+  Id)
   }
   revokeGov(Id: string):Observable<{message:string}>{

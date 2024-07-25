@@ -123,6 +123,7 @@ export class AuthEffects{
                 }),
                 catchError(error => {
                     this.toastr.error('Gov Official Failed!', error.error.message );
+                    console.log(error)
                     return of(AuthAction.approveGovFailure({message: error.message }));
                   })
             ))

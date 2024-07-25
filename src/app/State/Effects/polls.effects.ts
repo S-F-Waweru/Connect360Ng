@@ -25,6 +25,7 @@ export class PollsEffect{
                 }),
                 catchError(error => {
                     this.toastr.error('Poll Add Failed')
+                    console.log(error)
 
                    return of(PollsActions
                     .pollsAddFailure({message:error})

@@ -39,7 +39,8 @@ export class AddPollComponent implements OnInit {
     this.choices.removeAt(i);
   }
   onSubmit(){
-    console.log(this.form.value)
+    // console.log(this.form.value)
+    // console.log(this.form.value)
     this.store.dispatch(PollsActions.pollsAdd({poll:this.form.value}))
   }
 }

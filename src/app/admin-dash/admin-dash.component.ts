@@ -19,16 +19,22 @@ export class AdminDashComponent implements OnInit {
   constructor(
     private store: Store<AppState>
   ) { }
-  users$!: Observable<User[]>
+  users!:User[]
 
 
 
   async ngOnInit() {
-    await this.store.dispatch(AuthAction.getUsers())
-      this.users$=this.store.select(getAllUserSelector)
+    this.store.dispatch(AuthAction.getUsers())
+    this.store.select(getAllUserSelector).subscribe(users =>{
+      if(users){
+        this.users = users
+        console.log(this.users)
+      }
+    })
   }
 
   approve(Id:string){
+    console.log(Id)
     this.store.dispatch(AuthAction.approveGov({Id}))
   }
 

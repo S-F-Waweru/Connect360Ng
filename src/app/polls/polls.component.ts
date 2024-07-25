@@ -17,8 +17,8 @@ import { getPollsSelector } from '../State/Selectors/polls.selector';
   styleUrl: './polls.component.css'
 })
 export class PollsComponent implements OnInit{
-  // polls!:Poll[]
-  polls$ = this.store.select(getPollsSelector)
+  polls!:Poll[]
+  
   
   userRole = ''
 
@@ -33,7 +33,12 @@ export class PollsComponent implements OnInit{
       this.userRole = Role
     }
 
+
    this.store.dispatch(PollsActions.getPolls())
+    this.store.select(getPollsSelector).subscribe(polls =>{
+      this.polls = polls
+      console.log(polls)
+    })
 
    //get all votes
   //  this.store.dispatch(PollsActions.getVotes())

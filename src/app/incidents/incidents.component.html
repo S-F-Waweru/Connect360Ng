@@ -1,7 +1,8 @@
 <div class="w-full h-5/6 rounded text-gray-800 text-sm shadow-lg shadow-gray-300 bg bg-gray-300 overflow-y-scroll ">
-    <div class="flex justify-between">
+    <div  class="flex justify-between">
         <h1 class="text-xl font-semibold w-full text-start px-10 py-4">All Incidents</h1>
         <button 
+        *ngIf = "userRole == 'Citizen'"
         [routerLink]="['/incidents', 'add']"
         routerLinkActive=""
         [routerLinkActiveOptions]="{exact:true}"
@@ -12,6 +13,8 @@
    
 
 <div class="flex flex-col md:flex-row  ">
+    <div *ngIf="incidents$ | async as incidents">
+
     <div *ngIf="incidents">
     <div class="grid w-5/6 mx-auto grid-cols-1 gap-1  ">
        <!-- //card -->
@@ -19,8 +22,8 @@
        <div class=" flex w-11/12 h-44 mx-auto bg-white rounded-sm shadow p-2">
        <div class="w-1/2">
         
-        <p class="font-semibold  text-gray-700 text-base py-2">The Theft</p>
-        <p class="text-sm">Nyeri town</p>
+        <p class="font-semibold  text-gray-700 text-base py-2">{{incident.Incident}}</p>
+        <p class="text-sm">{{incident.Location}}</p>
         <div class="italic text-xs font-sans py-2 text-gray-500">
             <p>By Sam Sam</p>
             <p>Reported On: 23/12/23 </p>
@@ -29,7 +32,7 @@
         transition ease-in-out delay-75
         hover:bg-gray-700 hover:text-white
         "
-        [routerLink]="['/incidents', 'incident', 1]"
+        [routerLink]="['/incidents', 'incident', incident.Id]"
         routerLinkActive=""
         [routerLinkActiveOptions]="{exact:true}"
         >Read More</button>

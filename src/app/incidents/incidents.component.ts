@@ -6,6 +6,7 @@ import { Store } from '@ngrx/store';
 import { AppState } from '../State';
 import { IncidentAction } from '../State/Actions/incidents.actions';
 import { getAllIncidentsSelector } from '../State/Selectors/incidents.selectors';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-incidents',
@@ -19,24 +20,33 @@ export class IncidentsComponent implements OnInit{
     private store :Store<AppState>
   ){}
 
-incidents!:Incident[]
+// incidents!:Incident[]
+
+incidents$! :Observable<Incident[]>
 
 userRole =''
-  ngOnInit(): void {
+  ngOnInit(){
     const Role = localStorage.getItem('Role') 
     if (Role){
       this.userRole = Role
+      console.log(this.userRole);
+      
     }
 
+
     this.store.dispatch(IncidentAction.getIncidents())
-    this.store.select(getAllIncidentsSelector).subscribe(incidents =>{
-      if(incidents){
-        this.incidents = incidents
-        console.log(this.incidents)
-        console.log('hello');
+    this.store.subscribe(incidents =>{
+      // if(incidents){
+        // // this.incidents = [... incidents]
+        // console.log(this.incidents)
+        console.log('Here');
         
-      }
+        console.log(incidents);
+        
+      // }
     })
+
+    this.incidents$ = this.store.select(getAllIncidentsSelector)
 
 
 }

@@ -34,13 +34,13 @@
                     formControlName="Description" placeholder="Content"></textarea>
             </div>
             <div class=" flex flex-col gap-2 w-full ">
-                <span *ngIf="form.get('Photo')?.touched && !form.get('Photo')?.valid"
+                <span *ngIf="form.get('ImageURL')?.touched && !form.get('ImageURL')?.valid"
                     class="text-xs bg-red-100 p-2 rounded border-red-400 border-solid text-rose-700  ">Photo is
                     Required</span>
 
 
                 <label class="font-semibold text-sm ">Incident Photo</label>
-                <input type="file" class="rounded p-1.5 border-2 shadow-gray-300 ">
+                <input type="file" accept="image/*" class="rounded p-1.5 border-2 shadow-gray-300 ">
             </div>
 
             <div class="bg-gray-800 text-white w-full py-2 text-center rounded shadow-md font-semibold text-sm">
@@ -51,46 +51,51 @@
     <div class="w-full md:w-1/2 h-11/12 overflow-y-scroll  ">
         <p class="px-4 pt-4 font-semibold text-md ">Incidents You Reported</p>
 
-        <div class="w-full grid grid-cols-1 gap-3 h-10/12 my-4  ">
+        <div *ngIf="userIncidents">
+
+            <div class="w-full grid grid-cols-1 gap-3 h-10/12 my-4  ">
 
 
+                <div *ngFor="let incident of userIncidents">
 
+                    <div class=" flex w-11/12 h-44 mx-auto bg-white rounded-sm shadow p-2">
+                        <div class="w-1/2">
 
-            <div class=" flex w-11/12 h-44 mx-auto bg-white rounded-sm shadow p-2">
-                <div class="w-1/2">
-
-                    <p class="font-semibold  text-gray-700 text-base py-2">The Theft</p>
-                    <p class="text-sm">Nyeri town</p>
-                    <div class="italic text-xs font-sans py-2 text-gray-500">
-                        <p>By Sam Sam</p>
-                        <p>Reported On: 23/12/23 </p>
-                    </div>
-                    <button class="border-gray-700 border-2 w-full py-2 text-sm font-semibold rounded shadow shadow-gray-100
+                            <p class="font-semibold  text-gray-700 text-base py-2">{{incident.Incident}}</p>
+                            <p class="text-sm">{{incident.Location}}</p>
+                            <div class="italic text-xs font-sans py-2 text-gray-500">
+                                <p>By Sam Sam</p>
+                                
+                            </div>
+                            <button class="border-gray-700 border-2 w-full py-2 text-sm font-semibold rounded shadow shadow-gray-100
                  transition ease-in-out delay-75
                  hover:bg-gray-700 hover:text-white
-                 " [routerLink]="['/incidents', 'incident', 1]" routerLinkActive=""
-                        [routerLinkActiveOptions]="{exact:true}">Read More</button>
+                 " [routerLink]="['/incidents', 'incident', incident.Id]" routerLinkActive=""
+                                [routerLinkActiveOptions]="{exact:true}">Read More</button>
+
+                        </div>
+                        <div class="w-1/2  m-2">
+                            <img class="w-full h-3/4 items-center m-auto object-fill rounded shadow-lg"
+                                src="https://images.unsplash.com/photo-1605806616949-1e87b487fc2f?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                                alt="" srcset="">
+                            <div class=" flex   gap-3 w-full h/1/4 p-2 justify-center">
+                                <!-- <button
+                                    class=" w-11/12 mx-auto text-xs  font-semibold py-1.5 bg-green-200 shadow shadow-green-300 border-1 rounded border-solid border-green-500 text-green-500 transition-opacity ease-in-out delay-150 hover:text-green-50 hover:bg-green-500"
+                                    [routerLink]="['/incidents', 'update']" routerLinkActive=""
+                                    [routerLinkActiveOptions]="{exact:true}">Update</button> -->
+                                <button
+                                (click)="delete(incident.Id)"
+                                    class=" w-11/12 mx-auto text-xs  font-semibold py-1.5 bg-red-200 shadow shadow-red-300 border-1 rounded border-solid border-red-500 text-red-600 transition-opacity ease-in-out delay-150 hover:text-red-50 hover:bg-red-600">Delete</button>
+                            </div>
+                        </div>
+                    </div>
 
                 </div>
-                <div class="w-1/2  m-2">
-                    <img class="w-full h-3/4 items-center m-auto object-fill rounded shadow-lg"
-                        src="https://images.unsplash.com/photo-1605806616949-1e87b487fc2f?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                        alt="" srcset="">
-                    <div class=" flex   gap-3 w-full h/1/4 p-2 justify-center">
-                        <button
-                            class=" w-11/12 mx-auto text-xs  font-semibold py-1.5 bg-green-200 shadow shadow-green-300 border-1 rounded border-solid border-green-500 text-green-500 transition-opacity ease-in-out delay-150 hover:text-green-50 hover:bg-green-500"
-                            [routerLink]="['/incidents', 'update']" routerLinkActive=""
-                            [routerLinkActiveOptions]="{exact:true}">Update</button>
-                        <button
-                            class=" w-11/12 mx-auto text-xs  font-semibold py-1.5 bg-red-200 shadow shadow-red-300 border-1 rounded border-solid border-red-500 text-red-600 transition-opacity ease-in-out delay-150 hover:text-red-50 hover:bg-red-600">Delete</button>
-                    </div>
-                </div>
+
+
             </div>
 
-
-
         </div>
-
 
 
     </div>

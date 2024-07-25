@@ -2,14 +2,15 @@ export interface Incident {
     Id:string,
     Incident:string,
     Description:string,
-    PhotoUrl:string,
-    Location:string
+    ImageURL:string,
+    Location:string,
+    UserId:string
 }
 
 export interface IncidentRequest {
     Incident:string,
     Description:string,
-    PhotoUrl:string,
+    ImageURL:string,
     Location:string
 }
 export interface IncidentResponse {

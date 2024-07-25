@@ -1,6 +1,13 @@
 import { createReducer, on } from "@ngrx/store";
 import { AuthAction } from "../Actions/auth.actions";
 import { User } from "../../Models/Auth";
+
+const emptyUser = {
+    Id : '',  
+    Username:'',
+    Email:'',
+    Role:'',
+    RoleStatus:'',}
 // 
 export interface AuthInterface {
     loginSuccessMessage : string
@@ -33,7 +40,7 @@ export interface AuthInterface {
 
 }
 
-export const initialState = {
+export const initialState : AuthInterface = {
     loginSuccessMessage : '',
     loginSuccessFailure : '',
     loginLoading: false,
@@ -48,11 +55,11 @@ export const initialState = {
     changePasswordSuccessFailure : '',
     changePasswordLoading: false,
 
-    getUserSuccessMessage : '',
+    getUserSuccessMessage : emptyUser,
     getUserSuccessFailure : '',
     getUserLoading: false,
 
-    getUsersSuccessMessage : '',
+    getUsersSuccessMessage : [],
     getUsersSuccessFailure : '',
     getUsersLoading: false,
 
@@ -80,6 +87,7 @@ export const initialState = {
         }
     }),
 
+
     on(AuthAction.loginSuccess, (state, action) => {
         return {
             ...state,
@@ -97,6 +105,14 @@ export const initialState = {
             loginLoading: false
         }
     }),
+
+
+
+
+
+
+
+
 
     // Register
 
@@ -127,6 +143,15 @@ export const initialState = {
         }
     }),
 
+
+
+
+
+
+
+
+
+
     on(AuthAction.resetEmail, (state) => {
         return {
             ...state,
@@ -151,6 +176,9 @@ export const initialState = {
             resetEmailLoading: true
         }
     }),
+
+
+
 
     //resetEmail
     on(AuthAction.changePassword, (state) => {
@@ -177,31 +205,44 @@ export const initialState = {
             changePasswordLoading: true
         }
     }),
+
+
+
+
     // change Password
-    on(AuthAction.changePassword, (state) => {
+    on(AuthAction.getUsers, (state) => {
         return {
             ...state,
-            changePasswordSuccessMessage: '',
-            changePasswordErrorMessage: '',
-            changePasswordLoading: true
+            getUsersSuccessMessage: [],
+            getUsersSuccessFailure: '',
+            getUsersLoading: true
         }
     }),
-    on(AuthAction.changePasswordSuccess, (state, action) => {
+
+    on(AuthAction.getUsersSuccess, (state, action) => {
         return {
             ...state,
-            changePasswordSuccessMessage: action.response.Message,
-            changePasswordErrorMessage: '',
-            changePasswordLoading: true
+            getUsersSuccessMessage: action.users,
+            getUsersSuccessFailure: '',
+            getUsersLoading: true
         }
     }),
-    on(AuthAction.changePasswordFailure, (state, action) => {
+
+    on(AuthAction.getUsersFailure, (state, action) => {
         return {
             ...state,
-            changePasswordSuccessMessage: '',
-            changePasswordErrorMessage: action.message,
-            changePasswordLoading: true
+            etUsersSuccessMessage:[],
+            getUsersSuccessFailure: action.message,
+            getUsersLoading: false ,
         }
     }),
+
+
+
+
+
+
+
     //approveGOv
     on(AuthAction.approveGov, (state) => {
         return {
@@ -229,6 +270,13 @@ export const initialState = {
             approveGovLoading: false
         }
     }),
+
+
+
+
+
+
+
     //approveGOv
     on(AuthAction.revokeGov, (state) => {
         return {

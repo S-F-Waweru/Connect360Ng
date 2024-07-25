@@ -46,7 +46,7 @@ export const routes: Routes = [
                 {path:'', component:IncidentsComponent} ,
                 {path:'incident/:id', component:IncidentComponent} ,
                 {path:'add', component:AddIncidentComponent} ,
-                {path:'update', component:UpdateIncidentComponent} ,
+                // {path:'update/:id', component:UpdateIncidentComponent} ,
         ]} ,
 
         {path:'educate', component:EducateComponent},
